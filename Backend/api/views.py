@@ -10,7 +10,6 @@ import json
 import pandas as pd
 import pickle
 import requests
-import kagglehub
 import logging
 import shutil
 import glob
@@ -291,7 +290,11 @@ def run_model_training_pipeline(id):
                     })
             
             # Finalize training and get results
-            results= model_training.get_results()
+            results = model_training.get_results()
+            
+            if not results:
+                raise Exception("All models failed to train. Please check the dataset or preprocessing steps.")
+                
             model_card = model_training.get_formatted_results()
             
             update_step_status_model(5, "completed", {
@@ -840,8 +843,9 @@ def download_model(request, id):
     
 
 @api_view(['POST'])
-def download_dataset(request):
+def download_dataset(request):   
     try:
+        import kagglehub
         dataset_ref = request.data.get('datasetRef')
         if not dataset_ref:
             return Response({
@@ -886,6 +890,7 @@ def download_dataset(request):
 @api_view(['POST'])
 def select_dataset(request):
     try:
+        import kagglehub
         dataset_ref = request.data.get('datasetRef')
         if not dataset_ref:
             return Response({
