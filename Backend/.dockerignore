@@ -32,7 +32,6 @@ media/
 exports/
 uploads/
 cache/
-model/
 
 # Environment variables
 .env
