@@ -14,7 +14,8 @@ export default function DatasetSearch() {
         setError(null);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/search/', {
+            const API = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8000/";
+            const response = await axios.post(`${API}api/search/`, {
                 query: searchQuery
             });
 

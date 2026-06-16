@@ -2,3 +2,18 @@ db.sqlite3
 cache_db_0.11.db.wal
 cache
 .db.sqlite3
+.env
+venv
+
+# Python/Django ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+media/
+.pytest_cache/
+.coverage
+htmlcov/
+*.sqlite3
+.DS_Store
+catboost_info/

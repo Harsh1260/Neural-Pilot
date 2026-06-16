@@ -221,7 +221,7 @@ export function ModelCard({ model }: ModelCardProps) {
             <div>
               <p className="text-muted-foreground">CV Score</p>
               <p className="font-medium">
-                {model.cvScore?.mean.toFixed(4) || "N/A"}
+                {model.cvScore?.mean?.toFixed(4) ?? "N/A"}
               </p>
             </div>
             <div>
@@ -261,11 +261,11 @@ export function ModelCard({ model }: ModelCardProps) {
                     </h4>
                     <div className="bg-muted p-4 rounded-md">
                       <p className="text-sm">
-                        Mean CV Score: {model.cvScore?.mean.toFixed(4) || "N/A"}
+                        Mean CV Score: {model.cvScore?.mean?.toFixed(4) ?? "N/A"}
                       </p>
                       <p className="text-sm">
                         Standard Deviation:{" "}
-                        {model.cvScore?.std.toFixed(4) || "N/A"}
+                        {model.cvScore?.std?.toFixed(4) ?? "N/A"}
                       </p>
                       <p className="text-sm">
                         CV Time: {formatTime(model.cvTime || 0)}

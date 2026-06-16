@@ -48,7 +48,7 @@ export function DatasetCard({ dataset, onClick }: DatasetCardProps) {
 
       if (response.status === 200 && response.data) {
         const blob = new Blob([response.data], {
-          type: response.headers["content-type"] || "text/csv",
+          type: (response.headers["content-type"] as string) || "text/csv",
         });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");

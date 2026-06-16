@@ -6,15 +6,17 @@ import type {
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/";
 let id: number | null = null;
 let name: string | null = null;
-const storedData = localStorage.getItem("selectedDataset");
-if (storedData) {
-  try {
-    const data = JSON.parse(storedData);
-    id = data.id;
-    name = data.name;
-    console.log("Dataset ID:", data.id);
-  } catch (error) {
-    console.error("Error parsing dataset from localStorage:", error);
+if (typeof window !== "undefined") {
+  const storedData = localStorage.getItem("selectedDataset");
+  if (storedData) {
+    try {
+      const data = JSON.parse(storedData);
+      id = data.id;
+      name = data.name;
+      console.log("Dataset ID:", data.id);
+    } catch (error) {
+      console.error("Error parsing dataset from localStorage:", error);
+    }
   }
 }
 

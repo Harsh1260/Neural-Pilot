@@ -85,3 +85,19 @@ python manage.py runserver
 cd ../frontend
 npm install
 npm run dev
+```
+
+*Docker Deployment (Hugging Face Spaces):*
+
+The backend is pre-configured with a `Dockerfile` for easy deployment to Hugging Face Docker Spaces. It automatically runs as a non-root user (UID 1000) and binds to port `7860`.
+
+```bash
+# Navigate to the backend directory
+cd Backend
+
+# Build the Docker image
+docker build -t neuro-pilot-backend .
+
+# Run the Docker container locally
+docker run -p 7860:7860 --env-file .env neuro-pilot-backend
+```

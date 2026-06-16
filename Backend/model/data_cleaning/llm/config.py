@@ -11,7 +11,7 @@ It help to integrate the LLM with the SmartDataframe class.
 
 load_dotenv()
 try:
-    chat_model = ChatGroq(model_name='llama3-70b-8192', api_key=os.environ['GROQ_API_KEY'])
+    chat_model = ChatGroq(model_name='llama-3.3-70b-versatile', api_key=os.environ['GROQ_API_KEY'])
 except KeyError:
     raise EnvironmentError("Please set the 'GROQ_API_KEY' environment variable.")
 
